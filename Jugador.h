@@ -4,11 +4,12 @@
 class Jugador : public Entidad
 {
 public:
-	Jugador()
+	Jugador(Bitmap^ img)
 	{
 		x = y = 70;
 		dx = dy = 0;
-		ancho = alto = 40;
+		ancho = img->Width / 13;
+		alto = img->Height / 13;
 	}
 	void Mover(Graphics^ g)
 	{
@@ -20,6 +21,7 @@ public:
 	}
 	void Mostrar(Graphics^ g, Bitmap^ img)
 	{
-		g->FillRectangle(Brushes::Green, Area());
+		Rectangle corte = Rectangle(0, 0, 64, 64);
+		g->DrawImage(img, Area(), corte, GraphicsUnit::Pixel);
 	}
 };

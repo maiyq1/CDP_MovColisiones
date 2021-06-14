@@ -10,11 +10,13 @@ private:
 	Jugador* player;
 	Obstaculos* obj_obstaculos;
 	Bitmap^ imgTroll;
+	Bitmap^ imgPlayer;
 public:
 	Juego()
 	{
 		imgTroll = gcnew Bitmap("imagenes/troll.png");
-		player = new Jugador();
+		imgPlayer = gcnew Bitmap("imagenes/player.png");
+		player = new Jugador(imgPlayer);
 		obj_obstaculos = new Obstaculos(5, player->Area(), imgTroll);
 	}
 	~Juego()
@@ -58,7 +60,7 @@ public:
 	}
 	void Mostrar(Graphics^ g)
 	{
-		player->Mostrar(g, nullptr);
+		player->Mostrar(g, imgPlayer);
 		obj_obstaculos->Mostrar(g, imgTroll);
 	}
 };
