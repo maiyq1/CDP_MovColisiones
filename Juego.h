@@ -15,12 +15,13 @@ public:
 	{
 		imgTroll = gcnew Bitmap("imagenes/troll.png");
 		player = new Jugador();
-		obj_obstaculos = new Obstaculos(5, player->Area());
+		obj_obstaculos = new Obstaculos(5, player->Area(), imgTroll);
 	}
 	~Juego()
 	{
 		delete player;
 		delete obj_obstaculos;
+		delete imgTroll;
 	}
 
 	void MovimientoJugador(bool accion, Keys tecla)
